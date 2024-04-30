@@ -16,84 +16,84 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <main>
-        <div class="container-fluid py-5 jumbotron">
-            <div class="container">
-                <h1 class="display-4">Are Models Biased on Text Without Gender-related Language?</h1>
-                <p class="lead fw-bold">Catarina Belem, Preethi Seshadri, Yasaman Razeghi, Sameer Singh</p>
-                <p class="lead">Work accepted and presented at the main ICLR 2024 conference.</p>
-                <div class="text-center">
-                        <a class="btn btn-primary btn-lg" href="https://github.com/ucinlp/unstereo-eval/tree/main/datasets" role="button">
-                           <span><i class="fa-solid fa-database"></i></span>
-                           Dataset
-                        </a>
-                        <a class="btn btn-primary btn-lg" href="https://openreview.net/forum?id=w1JanwReU6" role="button">
-                            <span class="icon"><i class="ai ai-arxiv"></i></span>
-                            Paper
-                        </a>
-                        <a class="btn btn-primary btn-lg" href="https://github.com/ucinlp/unstereo-eval" role="button">
-                            <span class="icon"><i class="fa-brands fa-github"></i></span>
-                            Code
-                        </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="container py-5">
-            <div class="method">
-                <h2 class="primary">Abstract</h2>
-                <p class="text-secondary">
-                    Gender bias research has been pivotal in revealing undesirable behaviors in large language models, exposing serious gender stereotypes associated with occupations, and emotions.
-                    A key assumption in prior works is that models reinforce stereotypes in the training data by picking up on gendered correlations.  
-                    In this paper, we challenge this assumption and instead address the question: <span class="primary"><em>Do language models still exhibit gender bias in non-stereotypical settings?</em></span>
+        <div class="content">
+            <h1 class="title"><strong>Are Models Biased on Text without Gender-related Language?</strong></h1>
+            <p id="authors">
+                <span>
+                    <a href="https://pastelbelem8.github.io/">Catarina G. Belem</a>
+                    <a href="https://preethiseshadri518.github.io/">Preethi Seshadri</a>
+                    <a href="https://yasamanrazeghi.com/">Yasaman Razeghi</a>
+                    <a href="https://sameersingh.org/">Sameer Singh</a>
+                </span>
+                <br>
+                <span class="affiliation">University of California Irvine</span>
+            </p>
+            <font size="+2">
+                <p>
+                    <a href="https://openreview.net/forum?id=w1JanwReU6" target="_blank" class="button">Paper</a>
+                    <a href="https://www.youtube.com/watch?v=gmqBoBSYj9U" target="_blank" class="button">Video</a>
+                    <a href="https://github.com/ucinlp/unstereo-eval/tree/main/datasets" target="_blank" class="button">Dataset</a>
+                    <a href="https://github.com/ucinlp/unstereo-eval" target="_blank" class="button">Code</a>
                 </p>
-                <p class="text-secondary">To do so, we introduce <span class="primary fw-bold">UnStereoEval (USE)</span>, a novel framework tailored for investigating gender bias in stereotype-free scenarios.
-                    USE defines a sentence-level score based on pretraining data statistics to determine if the sentence contain minimal word-gender associations. 
-                    To systematically assess the fairness of popular language models in stereotype-free scenarios, we utilize USE to automatically generate benchmarks without any gender-related language. 
-                    By leveraging USE's sentence-level score, we also repurpose prior gender bias benchmarks (Winobias and Winogender) for non-stereotypical evaluation. 
-                </p>
-                <p class="text-secondary">
-                    Surprisingly, we find low fairness across all 28 tested models. 
-                    Concretely, models demonstrate fair behavior in only 9%-41% of  stereotype-free sentences, suggesting that bias does not solely stem from the presence of gender-related words.
-                    These results raise important questions about where underlying model biases come from and highlight the need for more systematic and comprehensive bias evaluation.
-                </p>
-            </div>
+            </font>
         </div>
-         
-        <div class="container py-5">
-            <div class="abstract">
-                <h2 class="primary">UnStereoEval</h2>
-
-                <div class="">
-                    <h3 class="primary">Definition of non-stereotypical sentences</h3>
-                    <p>TBD</p>
-                </div>
-
-                <div class="">
-                    <h3 class="primary">Benchmark construction</h3>
-                    <p>TBD</p>
-                </div>
-            </div>
-            
+        <div class="content">
+            <h2 class="title">Abstract</h2>
+            <p id="abstract">
+                We introduce <strong>UnStereoEval (USE)</strong>, a novel framework tailored for investigating gender bias in stereotype-free scenarios. 
+                USE defines a sentence-level score based on pretraining data statistics to determine if the sentence contain minimal word-gender associations. 
+                To systematically benchmark the fairness of popular language models in stereotype-free scenarios, we utilize USE to automatically generate benchmarks without any gender-related language. 
+                By leveraging USE's sentence-level score, we also repurpose prior gender bias benchmarks (Winobias and Winogender) for non-stereotypical evaluation. 
+                Surprisingly, we find low fairness across <strong>all 28 evaluated models</strong>. 
+                Concretely, models demonstrate fair behavior in <strong>only 9%-41% of stereotype-free sentences</strong>, suggesting that bias does not solely stem from the presence of gender-related words.
+                These results raise important questions about where underlying model biases come from and highlight the need for more systematic and comprehensive bias evaluation. 
+            </p>
         </div>
 
-        <div class="container py-5">
-            <div class="abstract">
-                <h2 class="primary">Examples</h2>
-                <p> TBD</p>
-
-            </div>
+        <div class="content">
+            <h2 class="title">Background</h2>
+            <p> Gender bias research has been pivotal in revealing undesirable behaviors in large language models, exposing serious gender stereotypes associated with occupations, and emotions. 
+                A key observation in prior work is that models reinforce stereotypes as a consequence of the gendered correlations that are present in the training data. 
+                In this paper, we focus on bias where the effect from training data is unclear, and instead address the question: <em>Do language models still exhibit gender bias in non-stereotypical settings?</em>
+            </p>
         </div>
+        <div class="content">
+            <h2 class="title">Contributions</h2>
+            <p id="contributions">
+                Our results reveal that, even after ensuring the evaluation set is composed of sentence pairs that are not gender-correlated according to the pretraining data, models still tend to be overconfident and assign higher probability mass to one gender over the other.
+                Key contributions of this work include: 
+            </p>
+            <ul>
+                <li>Approaches gender bias in NLP from a new perspective, challenging previously held observations with the intent of better understanding model behavior.</li>
+                <li>UnStereoEval (USE): a novel framework to study gender bias in stereotype-free scenarios.</li>
+                <li>Proposes an automated way of creating large-scale diverse English benchmark constituting fluent English sentences that are gender neutral and whose words have minimal gender correlations.</li>
+                <li>Leverages ChatGPT to propose a new evaluation benchmark and releases two repurposed stereotype-free versions of WinoBias and Winogender.</li>
+            </ul>
 
-        <div class="container py-5">
-            <div class="abstract">
-                <h2 class="primary">Evaluation</h2>
-                <p> TBD</p>
-            </div>
         </div>
-        <div class="container" id="BibTeX">
+        <div class="content">
+            <h2 class="title">UnStereoEval</h2>  
+            <p id="unstereo-eval">
+            </p>
+            <figure class="main-figure">
+                <img src="./assets/images/figure.png" alt="UnStereoEval" style="width:100%">
+            </figure>
+        </div>
+        <div class="content">
+            <h2 class="title">Creation of non-stereotypical benchmarks</h2>  
+            <p id="unstereo-eval">
+            </p>
+
+            <figure class="main-figure">
+                <embed src="./assets/images/figure2.pdf" width="100%" />
+            </figure>
+
+        </div>
+        <div class="content">Results</div>
+        <div class="content">Limitations</div>
+        <div class="content" id="BibTex">
             <h2 class="title">BibTeX</h2>
-            <div class="container content">
+            <div class="content">
                 <pre><code id="bibtex-textarea" readonly="true">@inproceedings{belem2024-unstereoeval,
     title={Are Models Biased on Text without Gender-related Language?},
     author={Catarina G Bel{\'e}m and Preethi Seshadri and Yasaman Razeghi and Sameer Singh},
@@ -101,16 +101,11 @@
     year={2024},
     booktitle={The Twelfth International Conference on Learning Representations},
     url={https://openreview.net/forum?id=w1JanwReU6}
-}</code></pre>
-            <div class="toolbar">
-                <div class="toolbar-item">
-                    <button class="btn" onclick="copyText()"><span><i class="fa-regular fa-copy"></i></span></button>
-                </div>
-            </div>
-            </div>
+}</code></pre>            
         </div>
+
+
     <footer class="container-fluid py-5 pb-3 text-muted text-small text-center"><small>Copyright © 2024</small></footer>        
-    </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
