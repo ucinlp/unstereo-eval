@@ -5,6 +5,16 @@ p {
     margin-inline-start: 1em;
     margin-inline-end: 1em;
 }
+
+code {
+    display: block;
+    padding-inline-start: 1em;
+    padding-inline-end: 1em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    font-family: monospace;
+}
+
 .affiliation {
     font-size: 22px;
 }
@@ -23,11 +33,20 @@ p {
     box-shadow: 0 0.1em 0.01em 0 rgba(0,0,0,0.1);
     border-radius: 1.5em;
     background-color: #f9f9f9;
+    font-family: 'Google Sans', sans-serif;
 }
 
 
 #authors {
-    text-align: : center;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+
+#bibtex {
+    text-align: center;
+    margin-block-start: 0.83em;
     margin-bottom: 20px;
     font-size: 20px;
 }
