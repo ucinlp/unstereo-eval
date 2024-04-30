@@ -27,7 +27,6 @@ code {
     text-align: center;
 }
 
-
 .content {
     text-align: justify;
     box-shadow: 0 0.1em 0.01em 0 rgba(0,0,0,0.1);
@@ -36,6 +35,9 @@ code {
     font-family: 'Google Sans', sans-serif;
 }
 
+.links {
+    text-align: center;
+}
 
 #authors {
     text-align: center;
@@ -49,4 +51,12 @@ code {
     margin-block-start: 0.83em;
     margin-bottom: 20px;
     font-size: 20px;
+}
+
+
+a.btn {
+    background-color: #f0f0f0;
+    border-radius: 1em;
+    box-shadow: 0 0.1em 0.1em 0 rgba(0,0,0,0.1);
+
 }
