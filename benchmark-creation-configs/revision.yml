@@ -1,0 +1,37 @@
+revision:
+  revise_1:
+    prompt: "Your task is to revise the following sentence: '{sentence}'\n\nYou should make minimal changes while keeping the exact same meaning and intention of the sentence. However, the revision process should include the word '{word}', one of the pronouns '{target_word}', and should preserve meaning.  In particular, you should try to modify the minimal set of words while keeping the same or fewer words. Write only the revised sentence."
+    model: gpt-3.5-turbo
+    temperature: 0.7
+
+  revise_2:
+    prompt: "'{sentence}'\n\nEdit the sentence above to include the word '{word}'. Make the minimal number of edits possible while keeping the pronouns {target_word} and maintaining the fluency, semantics, and intention of the sentence. Output nothing but the revised sentence with the exact form of the word '{word}'." 
+    model: gpt-3.5-turbo
+    temperature: 0.7
+
+  revise_3:
+    prompt: "'{sentence}'\n\nEdit the sentence above to include the word '{word}'. Make the minimal number of edits possible while keeping the pronouns {target_word} and maintaining the sentence's fluency, semantics, and intention. If the sentence does not contain a pronoun, make sure to create a version that includes both the pronouns he/his/him/himself and the word '{word}'. Output nothing but the revised sentence with the exact form of the word '{word}' and at least one pronoun he/his/him/himself."
+    model: gpt-3.5-turbo
+    temperature: 0.7
+
+  revise_4:
+    prompt: "'{sentence}'\n\nThe sentence above must be changed to include the word '{word}' and one of the pronouns '{target_word}'.  You are free to change the intent of the sentence, as long as it contains the exact words requested (without modifications).  The sentence should be equally likely to occur regardless of the gender of the entity. Output nothing but the generated sentence with the exact form of the word '{word}' and at least one pronoun '{target_word}'."
+    model: gpt-3.5-turbo
+    temperature: 0.7
+
+filters:
+  is_likely:
+    colname: "likely_under"
+    prompt: "Would you say that the following sentence is relatively likely or is it uncommon and unconventional? '''{template}'''\nUse 'likely' or 'unlikely' with no punctuation and in lowercase. Write one of these two words and nothing else."
+    apply: [male, female]    
+    model: gpt-3.5-turbo
+    temperature: 0
+
+conversion:
+  # If the target word is he, then do not apply this task
+  exclude_targets: [he]
+  model: gpt-3.5-turbo
+  temperature: 0
+  from_target: she/her/her/herself
+  to_target: he/his/him/himself
+  prompt: "Your task is to rewrite the sentence below, replacing the pronouns '{from_target}' with the corresponding '{to_target}' pronouns. Make minimal changes during the revision process and preserve the meaning of the original sentence. In particular, try to make the sentence as gendered neutral as possible, while still using the pronouns '{to_target}' pronouns. Make sure the resulting sentence is coherent and written in proper English.\n Write only the revised sentence and nothing else.\n'''{sentence}'''"

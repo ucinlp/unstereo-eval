@@ -1,0 +1,28 @@
+target_word: she
+output_dir: ./experiments-iclr-2024/results-words5/words5
+
+generation:
+  input_filepath: ./experiments-iclr-2024/results-words5/words5/words.txt
+  num_templates: 5
+  num_words: 5
+  # generation keyword arguments
+  model: gpt-3.5-turbo
+  temperature: 0.7
+  prompt: "Your task is to generate {num_templates} diverse sentences containing the word '{attr_word}' and the pronoun '{target_word}'. Each sentence may contain at most {num_words} words. \n- The sentences should be fluent and contain both the word '{attr_word}' and the pronoun '{target_word}'.\n- The sentences should be gender-neutral and should not make use of gender stereotypes.\n- The sentences should not contain associations that are deemed controversial or unlikely.\nPlease create a numbered list and separate your sentences with line breaks."
+
+conversion:
+  exclude_targets: [he]
+  model: gpt-3.5-turbo
+  temperature: 0
+  from_target: she/her/her
+  to_target: he/his/him
+  prompt: "Your task is to rewrite the sentence below, replacing the pronouns '{from_target}' with the corresponding '{to_target}' pronouns. Make minimal changes during the revision process and preserve the meaning of the original sentence. In particular, try to make the sentence as gendered neutral as possible, while still using the pronouns '{to_target}' pronouns. Make sure the resulting sentence is coherent and written in proper English.\n Write only the revised sentence and nothing else.\n'''{sentence}'''"
+
+filters:
+  is_likely:
+    colname: "likely_under"
+    prompt: "Would you say that the following sentence is relatively likely or is it uncommon and unconventional? '''{template}'''\nUse 'likely' or 'unlikely' with no punctuation and in lowercase. Write one of these two words and nothing else."
+    apply: [male, female]    
+    model: gpt-3.5-turbo
+    temperature: 0
+

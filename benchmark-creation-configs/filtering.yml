@@ -1,0 +1,8 @@
+filters:
+  is_likely:
+    colname: "likely_under"
+    prompt: "Would you say that the following sentence is relatively likely or is it uncommon and unconventional? '''{template}'''\nUse 'likely' or 'unlikely' with no punctuation and in lowercase. Write one of these two words and nothing else."
+    apply: [male, female]    
+    model: gpt-3.5-turbo
+    temperature: 0
+

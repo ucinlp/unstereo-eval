@@ -1,0 +1,20 @@
+{
+  "gender_to_placeholder": {
+    "\\b((H|h)e)\\b": "{pronoun}",
+    "\\b((H|h)is)\\b": "{pronoun1}",
+    "\\b((H|h)im)\\b": "{pronoun2}",
+    "\\b((H|h)im)self\\b": "{pronoun2}self"
+  },
+  "placeholder_to_gender": {
+    "male": {
+      "{pronoun}": "he",
+      "{pronoun1}": "his",
+      "{pronoun2}": "him"
+    },
+    "female": {
+      "{pronoun}": "she",
+      "{pronoun1}": "her",
+      "{pronoun2}": "her"
+    }
+  }
+}
