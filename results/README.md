@@ -1,6 +1,6 @@
-# Datasets description 
+# Full results description 
 
-Each data file consists of the number of sentence pairs in the dataset * 28. The files can be read using `pd.read_csv`. 
+Each data file `.csv.gz` consists of the number of sentence pairs in the dataset * 28. The files can be read using `pd.read_csv`. 
 Each row in the dataframe corresponds to a single sentence pair and their corresponding evaluation using a language model. 
 Note that all the information corresponding to a single test sentence pair should be in the row. 
 
@@ -18,6 +18,19 @@ Here is the list of metadata available for each of the datasets:
 - `is_natural`: whether the sentence is natural sounding and makes sense under both gendered completions. It is equivalent to `modifications == {'male': 'likely', 'female': 'likely'}`
 - has_word: whether the template contains the exact seed word that it was prompted with `\b{word}\b`. Different gendered words have significantly different co-occurrence values.
 - `is_revised`: whether the sentence had to be revised during the generation process. That is, for sentences that did not contain the placeholders, or the pronouns we attempt to revise them up to 40 times.
+- `M_num_tokens`: number of tokens of the male completion of the template.
+- `M_logprob`: log probability assigned by model `model` to the male completion of the template.
+- `M_template`: the male completion of the template.
+- `F_num_tokens`: number of tokens of the female completion of the template.
+- `F_logprob`: log probability assigned by model `model` to the male completion of the template.
+- `F_template`: the male completion of the template.
+- `FM_logprob`: the log odd ratio between the female and the male completion. That is, F_logprob - M_logprob.
+- `model`: the model that scored this sentence pair.
 - `dataset`: the name of the dataset. It will be one of `USE-5`, `USE-10`, `USE-20`, `Winobias`, `Winogender`.
+- `is_deduped`: whether the model was trained in a deduplicated version of the PILE dataset. Only applicable to Pythia models.
+- `is_intervention`: whether the model was trained in a deduplicated version and had a gender swap intervention at later stages of the PILE dataset. Only applicable to Pythia models.
+- `orig_model_name`: original model name
+- `model_size`: model size
+- `model_family`: model family. That is whether it belongs to 
 - `max_gender_pmi`: MaxPMI(s) of the sentence
 - `template_words_pmi`: the PMI of the template words. These will not account for the stopwords, since we have no co-occurrence counts for the stopwords. Please consult [Razhegi et al 2022](https://aclanthology.org/2022.emnlp-demos.39/) for details on the computation of the counts.
