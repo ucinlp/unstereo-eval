@@ -1,7 +1,13 @@
 $(document).ready(function() {
-    // Define chart variable
-    let chart = null;
-    
+    // Define chart variable    
+    const metrics_path = "https://raw.githubusercontent.com/ucinlp/unstereo-eval/main/docs/assets/data/all_datasets.json";
+    const examples_path = "https://raw.githubusercontent.com/ucinlp/unstereo-eval/main/docs/assets/data/examples.json"; 
+
+    const numExamples = 10;
+    const dataColumns = [
+        'orig_index', 'word', 'template', 'max_gender_pmi', 'has_pronoun', 'template_words_pmi',
+    ]
+
     const models = [
         'pythia-70m',
         'pythia-70m (D)',
@@ -34,24 +40,39 @@ $(document).ready(function() {
     ];
     // Function to load data from CSV file
     function loadDataFromJSON(callback) {
-        d3.json("https://raw.githubusercontent.com/ucinlp/unstereo-eval/main/docs/assets/data/all_datasets.json")
-        .then(data => {
-            callback(data);
-        });
+        Promise.all([
+            d3.json(examples_path),
+            d3.json(metrics_path)
+        ])
+        .then(function(data) {
+            // Destructure the array to get individual datasets
+            var [dataset1, dataset2] = data;
+            // Call the callback function with the datasets
+            callback(dataset2, dataset1);
+        }).catch(function(error) {
+            // Handle any errors that occur during data loading
+            console.error("Error loading data:", error);
+          });
     }
   
-    function filterAndVisualizeData(dataset) {
+    function filterAndVisualizeData(dataset, examples) {
       const datasetMenu = document.getElementById('dataset-menu');
       const constraintMenu = document.getElementById('eta-menu');
       const metricMenu = document.getElementById('metric-menu');
   
       // Event listener for dropdown menu changes
       datasetMenu.addEventListener('change', updateVisualization);
+      datasetMenu.addEventListener('change', updateTable);
+
       constraintMenu.addEventListener('change', updateVisualization);
+      constraintMenu.addEventListener('change', updateTable);
+
       metricMenu.addEventListener('change', updateVisualization);
+      metricMenu.addEventListener('change', updateTable);
 
       // Initial visualization
       updateVisualization();
+      updateTable();
   
       // Function to update the visualization based on the selected values
       function updateVisualization() {
@@ -169,9 +190,82 @@ $(document).ready(function() {
             .style("font-size", "0.5em");
         };
 
+        // ----------------------------------------------------------------------
+        // Create the table 
+        // ----------------------------------------------------------------------
+        var table = d3.select("body").append("table")
         
 
+      }
+
+      function updateTable() {
+        const selectedDataset = datasetMenu.value;
+        const selectedConstraint = constraintMenu.value;
+  
+        examplesData = examples[selectedDataset];
+        // Filter the dataset based on the selected constraint 
+        if (selectedConstraint != "unconstrained") {
+            examplesData = examplesData.filter(d => d["max_gender_pmi"] <= parseFloat(selectedConstraint));
         }
+
+        selectedExamples = [];
+        selectedExamplesSize = Object.keys(examplesData).length
+        while (selectedExamples.length < 10) {
+            randomIndex = Math.floor(Math.random() * selectedExamplesSize);
+            if (!selectedExamples.includes(randomIndex)) {
+                selectedExamples.push(randomIndex);
+            }
+        }
+
+
+        // Format examples
+        selectedExamples = selectedExamples.map( i => {
+            return {
+                'orig_index': examplesData[i]['orig_index'],
+                'word': examplesData[i]['word'],
+                'template': examplesData[i]['template'],
+                'max_gender_pmi': examplesData[i]['max_gender_pmi'].toFixed(2),
+                'has_pronoun': (examplesData[i]['has_pronoun']) ? 'yes' : 'no', 
+                'template_words_pmi': examplesData[i]['template'],
+            }
+        });
+
+        // Clear existing chart if any
+        d3.select('#examples-table').html('');
+        // Create table 
+        var table = d3.select('#examples-table')
+		var thead = table.append('thead')
+		var	tbody = table.append('tbody');
+        
+        // Append the header row
+        thead.append('tr')
+		  .selectAll('th')
+		  .data(dataColumns)
+          .enter()
+		  .append('th')
+            .text(function (column) { return column; });
+        
+        // create a row for each object in the data
+		var rows = tbody
+            .selectAll('tr')
+            .data(selectedExamples)
+            .enter()
+            .append('tr');
+
+        // create a cell in each row for each column
+		var cells = rows
+            .selectAll('td')
+            .data(function (row) {
+                return dataColumns.map(function (column) {
+                    return {column: column, value: row[column]};
+                });
+            })
+            .enter()
+            .append('td')
+            .text(function (d) { return d.value; });
+
+
+      }
     }
 
 

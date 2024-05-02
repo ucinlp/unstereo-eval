@@ -51,7 +51,7 @@
     </div>
 
     <div class="container-fluid content">
-        <h2 class="title">Abstract</h2>
+        <h2 class="title text-secondary">Abstract</h2>
         <div id="abstract">
             We introduce UnStereoEval (USE), a novel framework tailored for investigating gender bias in stereotype-free scenarios. 
             USE defines a sentence-level score based on pretraining data statistics to determine if the sentence contain minimal word-gender associations. 
@@ -64,16 +64,17 @@
     </div>
 
     <div class="container-fluid content">
-        <h2 class="title">Background</h2>
+        <h2 class="title text-secondary">Background</h2>
         <div> Gender bias research has been pivotal in revealing undesirable behaviors in large language models, exposing serious gender stereotypes associated with occupations, and emotions. 
             A key observation in prior work is that models reinforce stereotypes as a consequence of the gendered correlations that are present in the training data. 
-            In this paper, we focus on bias where the effect from training data is unclear, and instead address the question: <em>Do language models still exhibit gender bias in non-stereotypical settings?</em>
+            In this paper, we focus on bias where the effect from training data is unclear, and instead address the question:
+            <em class="text-secondary">Do language models still exhibit gender bias in non-stereotypical settings?</em>
         </div>
+        <!-- add motivating image -->
     </div>
 
-
     <div class="container-fluid content">
-        <h2 class="title">UnStereoEval</h2>  
+        <h2 class="title text-secondary">UnStereoEval</h2>  
         <div id="unstereo-eval">
             UnStereoEval evaluates gender fairness of language models using non-stereotypical English sentences.
             It builds on word-level pretraining statistics to quantify the gender correlation of each word and thus ensure minimal gender correlations within sentences.
@@ -92,7 +93,7 @@
 
 
     <div class="container-fluid content">
-        <h2 class="title">Creation of non-stereotypical benchmarks</h2>  
+        <h2 class="title text-secondary">Creation of non-stereotypical benchmarks</h2>  
         <div id="unstereo-eval-pipeline">
             The reliable assessment of fairness in stereotype-free scenarios requires varied and natural-sounding sentences. 
             To address this requirement, we develop an automated model-based pipeline to create non-stereotypical English sentences.
@@ -118,9 +119,23 @@
 
 
     <div class="container-fluid content">
-        <h2 class="title">Evaluation using UnStereoEval</h2>
-        <div id="metrics" class="title row">
-            <div class="col-md-3">
+        <h2 class="title text-secondary">Evaluation using UnStereoEval</h2>
+        <div class="row">
+            <p>
+                Ideally, a model evaluated on non-stereotypical sentences should exhibit no bias towards either
+                gender, especially when evaluated on datasets that impose stricter gender co-occurrence constraints.
+                We capture this intuition with the <b>Unstereo Score</b> metric, which measures the percentage of examples for which language models exhibits
+                no gender preference. An unbiased model should have an Unstereo Score of 100%, i.e., it assigns roughly the same probability mass to both male and gendered completions.
+            </p>
+            <p>
+                In addition to Unstereo Score, we measure model's tendency to systematically assign higher propability mass to one specific gender over the other. 
+                This is quantified by the gender-based <b>Preference disparity</b> metric, which measures the percentage of preference pairs for which the model assigns 
+                higher probability mass to the male completion. A model with no preference disparity should have a score of 50%, which implies that among pairs for which the model exhibits preferences, it prefers female completions for 50% of those pairs and the other 50% prefers male.
+            </p>
+        </div>
+
+        <div id="metrics" class="row"> <!-- make them aligned-->
+            <div>
                 <label class="text-secondary" for="dataset-menu">Dataset:&nbsp;</label>
                 <select name="dataset-menu" id="dataset-menu">
                     <option value="USE-5" selected="selected">USE-5</option>
@@ -130,7 +145,7 @@
                     <option value="Winogender">Winogender</option>
                     </select>
             </div>
-            <div class="col-md-3">
+            <div>
                 <label class="text-secondary" for="eta-menu">η:&nbsp;</label>
                 <select name="eta-menu" id="eta-menu">
                     <option value="0.3">0.3</option>
@@ -141,25 +156,38 @@
                     <option value="unconstrained" selected="selected">None</option>
                 </select>
             </div>
-            <div class="col-md-3">
+            <div>
                 <label class="text-secondary" for="metric-menu">Metric:&nbsp;</label>
                 <select name="metric-menu" id="metric-menu">
                     <option value="neutral__avg" selected="selected">Unstereo score</option>
                     <option value="male_rel_ratio">Preference disparity</option>
                 </select>
             </div>
-            <div class="col-md-3">
+            <div>
                 <font class="text-secondary">Benchmark Size:</font>
                 <font id="benchmark-size"></font>
             </div>
-            <div>
+        </div>
+        <div class="row">
+            <div class="col-12">
                 <svg id="barplot" width="800" height="300"></svg>
             </div>
+        </div>
+        <br>
+        <div class="row">
+            Examples:
+        </div>
+        <div class="row">
+            <div class="table">
+                <table id="examples-table">
+                  <!-- Table rows will be added here -->
+                </table>
+              </div>
         </div>
     </div>
 
     <div class="container-fluid content" id="BibTex">
-        <h2 class="title">BibTeX</h2>
+        <h2 class="title text-secondary">BibTeX</h2>
         <div class="row">
             <code id="bibtex-textarea" readonly="true">
                 @inproceedings{belem2024-unstereoeval,
