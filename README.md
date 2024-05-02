@@ -9,7 +9,7 @@ To do so, we introduce UnStereoEval (USE), a novel framework tailored for invest
 
 ## Datasets 
 
-The unconstrained version of the datasets can be found in [./datasets](./datasets).
+The unconstrained version of the datasets can be found at [🤗 datasets](https://huggingface.co/datasets/ucinlp/unstereo-eval).
 
 ## Code 
 
