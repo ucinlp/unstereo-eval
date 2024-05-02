@@ -19,149 +19,160 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="js/main.js"></script>
-</head>
-<body>
-        <div class="content">
-            <h1 class="title"><strong>Are Models Biased on Text without Gender-related Language?</strong></h1>
-            <h3 class="publication-award">ICLR 2024</h3>
-            <p id="authors">
-                <span>
-                    <a href="https://pastelbelem8.github.io/">&nbsp; Catarina G. Belem</a>
-                    <a href="https://preethiseshadri518.github.io/">&nbsp; Preethi Seshadri</a>
-                    <a href="https://yasamanrazeghi.com/">&nbsp; Yasaman Razeghi</a>
-                    <a href="https://sameersingh.org/">&nbsp; Sameer Singh</a>
-                </span>
-                <br>
-                <span class="affiliation">University of California Irvine</span>
-            </p>
-            <font size="+2">
-                <p class="links">
-                    <a href="https://arxiv.org/abs/2405.00588" target="_blank" class="btn btn-lg"><span class="icon"><i class="ai ai-arxiv"></i></span>&nbsp;Paper</a>
-                    <a href="https://www.youtube.com/watch?v=gmqBoBSYj9U" target="_blank" class="btn btn-lg"><span class="icon"><i class="fa-solid fa-video"></i></span>&nbsp;Video</a>
-                    <a href="https://huggingface.co/datasets/ucinlp/unstereo-eval" target="_blank" class="btn btn-lg"><span class="icon"><i class="fa-solid fa-database"></i></span>&nbsp;Dataset</a>
-                    <a href="https://github.com/ucinlp/unstereo-eval" target="_blank" class="btn btn-lg"><span class="icon"><i class="fa-brands fa-github"></i></span>&nbsp;Code</a>
-                </p>
-            </font>
-        </div>
-        <div class="content">
-            <h2 class="title">Abstract</h2>
-            <p id="abstract">
-                We introduce UnStereoEval (USE), a novel framework tailored for investigating gender bias in stereotype-free scenarios. 
-                USE defines a sentence-level score based on pretraining data statistics to determine if the sentence contain minimal word-gender associations. 
-                To systematically benchmark the fairness of popular language models in stereotype-free scenarios, we utilize USE to automatically generate benchmarks without any gender-related language. 
-                By leveraging USE's sentence-level score, we also repurpose prior gender bias benchmarks (Winobias and Winogender) for non-stereotypical evaluation. 
-                Surprisingly, we find low fairness across all 28 evaluated models. 
-                Concretely, models demonstrate fair behavior in only 9%-41% of stereotype-free sentences, suggesting that bias does not solely stem from the presence of gender-related words.
-                These results raise important questions about where underlying model biases come from and highlight the need for more systematic and comprehensive bias evaluation. 
-            </p>
-        </div>
 
-        <div class="content">
-            <h2 class="title">Background</h2>
-            <p> Gender bias research has been pivotal in revealing undesirable behaviors in large language models, exposing serious gender stereotypes associated with occupations, and emotions. 
-                A key observation in prior work is that models reinforce stereotypes as a consequence of the gendered correlations that are present in the training data. 
-                In this paper, we focus on bias where the effect from training data is unclear, and instead address the question: <em>Do language models still exhibit gender bias in non-stereotypical settings?</em>
-            </p>
+</head> 
+<body>
+    <div class="container-fluid content">
+        <h1 class="title"><strong>Are Models Biased on Text without Gender-related Language?</strong></h1>
+        <h3 class="publication-award">ICLR 2024</h3>
+        <div class="container" id="authors">
+            <div class="row justify-content-center">
+                <a class="col-md-3" href="https://pastelbelem8.github.io/">Catarina G. Belem</a>
+                <a class="col-md-3" href="https://preethiseshadri518.github.io/">Preethi Seshadri</a>
+                <a class="col-md-3" href="https://yasamanrazeghi.com/">Yasaman Razeghi</a>
+                <a class="col-md-3" href="https://sameersingh.org/">Sameer Singh</a>
+            </div>
+            <div class="row justify-content-center">University of California Irvine</div>
+            <div class="row justify-content-center">
+                <div class="col-sm-2" align="center">
+                    <a href="https://arxiv.org/abs/2405.00588" target="_blank" class="btn btn-outline-secondary btn-sm"><span class="icon"><i class="ai ai-arxiv"></i></span>&nbsp;Paper</a>
+                </div>
+                <div class="col-sm-2" align="center">
+                    <a href="https://www.youtube.com/watch?v=gmqBoBSYj9U" target="_blank" class="btn btn-outline-secondary btn-sm"><span class="icon"><i class="fa-solid fa-video"></i></span>&nbsp;Video</a>
+                </div>
+                <div class="col-sm-2" align="center">
+                    <a href="https://huggingface.co/datasets/ucinlp/unstereo-eval" target="_blank" class="btn btn-outline-secondary btn-sm"><span class="icon"><i class="fa-solid fa-database"></i></span>&nbsp;Dataset</a>
+                </div>
+                <div class="col-sm-2" align="center">
+                    <a href="https://github.com/ucinlp/unstereo-eval" target="_blank" class="btn btn-outline-secondary btn-sm"><span class="icon"><i class="fa-brands fa-github"></i></span>&nbsp;Code</a>
+                </div>
+            </div>
+            </div>
+    </div>
+
+    <div class="container-fluid content">
+        <h2 class="title">Abstract</h2>
+        <div id="abstract">
+            We introduce UnStereoEval (USE), a novel framework tailored for investigating gender bias in stereotype-free scenarios. 
+            USE defines a sentence-level score based on pretraining data statistics to determine if the sentence contain minimal word-gender associations. 
+            To systematically benchmark the fairness of popular language models in stereotype-free scenarios, we utilize USE to automatically generate benchmarks without any gender-related language. 
+            By leveraging USE's sentence-level score, we also repurpose prior gender bias benchmarks (Winobias and Winogender) for non-stereotypical evaluation. 
+            Surprisingly, we find low fairness across all 28 evaluated models. 
+            Concretely, models demonstrate fair behavior in only 9%-41% of stereotype-free sentences, suggesting that bias does not solely stem from the presence of gender-related words.
+            These results raise important questions about where underlying model biases come from and highlight the need for more systematic and comprehensive bias evaluation. 
         </div>
-        <div class="content">
-            <h2 class="title">UnStereoEval</h2>  
-            <p id="unstereo-eval">
-                UnStereoEval evaluates gender fairness of language models using non-stereotypical English sentences.
-                It builds on word-level pretraining statistics to quantify the gender correlation of each word and thus ensure minimal gender correlations within sentences.
-                Because we remove gender correlations present in the pretraining data, we hypothesize that language models trained on the same data should assign (approximately) equal probability mass to minimally distant gendered sentences.
-            </p>
-            <figure class="main-figure">
-                <img src="./assets/images/figure.png" alt="UnStereoEval">
-            </figure>
-            <p>
-                The framework can be used to filter out sentences of gender-invariant datasets, such as Winobias (WB) or Winogender (WG), and, thus, restrict
-                the evaluation to a subset with minimal gender correlations. But doing so may lead to considerably smaller datasets, since these 
-                datasets are created to surface stereotypical biases (e.g., gender-occupation, gender-emotion) known to
-                be pervasive in training datasets.
-            </p>
+    </div>
+
+    <div class="container-fluid content">
+        <h2 class="title">Background</h2>
+        <div> Gender bias research has been pivotal in revealing undesirable behaviors in large language models, exposing serious gender stereotypes associated with occupations, and emotions. 
+            A key observation in prior work is that models reinforce stereotypes as a consequence of the gendered correlations that are present in the training data. 
+            In this paper, we focus on bias where the effect from training data is unclear, and instead address the question: <em>Do language models still exhibit gender bias in non-stereotypical settings?</em>
         </div>
-        <div class="content">
-            <h2 class="title">Creation of non-stereotypical benchmarks</h2>  
-            <p id="unstereo-eval-pipeline">
-                The reliable assessment of fairness in stereotype-free scenarios requires varied and natural-sounding sentences. 
-                To address this requirement, we develop an automated model-based pipeline to create non-stereotypical English sentences.
-                The pipeline consists of two parts:
-            </p>
-            <ul>
-                <li> 
-                    <span style="color:cornflowerblue"> 1) Word selection stage</span> chooses seed words using a 
-                    PMI-based score to guide sentence generation;
-                </li>
-                <li>
-                    <span style="color: orange"> 2) Sentence pairs generation stage</span> leverages ChatGPT to 
-                    produce 5 sentences for each (gender, seed word) pair, followed by the creation of the 
-                    opposite gender variant, and subsequent removal of unnatural pairs or any pair containing 
-                    gender co-occurring words (operationalized as |MaxPMI(s)| ≤ η).
-                </li>
-            </ul>
-            <figure class="main-figure">
-                <img src="./assets/images/figure2.png" alt="UnStereoEval">
-            </figure>
-            <p>The pipeline can be repeated multiple times until a desired benchmark size is achieved.</p>
+    </div>
+
+
+    <div class="container-fluid content">
+        <h2 class="title">UnStereoEval</h2>  
+        <div id="unstereo-eval">
+            UnStereoEval evaluates gender fairness of language models using non-stereotypical English sentences.
+            It builds on word-level pretraining statistics to quantify the gender correlation of each word and thus ensure minimal gender correlations within sentences.
+            Because we remove gender correlations present in the pretraining data, we hypothesize that language models trained on the same data should assign (approximately) equal probability mass to minimally distant gendered sentences.
         </div>
-        <div class="content">
-            <h2 class="title">Evaluation using UnStereoEval</h2>
-            <div id="metrics" class="title">
-                <p>
-                    <span>
-                        <label for="dataset-menu">Dataset:&nbsp;</label>
-                        <select name="dataset-menu" id="dataset-menu">
-                            <option value="USE-5" selected="selected">USE-5</option>
-                            <option value="USE-10">USE-10</option>
-                            <option value="USE-20">USE-20</option>
-                            <option value="Winobias">Winobias</option>
-                            <option value="Winogender">Winogender</option>
-                            </select>
-                    </span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>
-                        <label for="eta-menu">η:&nbsp;</label>
-                        <select name="eta-menu" id="eta-menu">
-                            <option value="0.3">0.3</option>
-                            <option value="0.5">0.5</option>
-                            <option value="0.65">0.65</option>
-                            <option value="0.8">0.8</option>
-                            <option value="1.0">1.0</option>
-                            <option value="unconstrained" selected="selected">None</option>
-                        </select>
-                    </span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <span>
-                        <label for="metric-menu">Metric:&nbsp;</label>
-                        <select name="metric-menu" id="metric-menu">
-                            <option value="neutral__avg" selected="selected">Unstereo score</option>
-                            <option value="male_rel_ratio">Preference disparity</option>
-                        </select>
-                    </span>
-                    <span>
-                        <font color=#0f0f0f>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Benchmark Size:</font>
-                        <font id="benchmark-size"></font>
-                    </span>
-                </p>
-                <p>
-                    <svg id="barplot" width="800" height="300"></svg>
-                </p>
+        <figure class="main-figure">
+            <img src="./assets/images/figure.png" alt="UnStereoEval">
+        </figure>
+        <div>
+            The framework can be used to filter out sentences of gender-invariant datasets, such as Winobias (WB) or Winogender (WG), and, thus, restrict
+            the evaluation to a subset with minimal gender correlations. But doing so may lead to considerably smaller datasets, since these 
+            datasets are created to surface stereotypical biases (e.g., gender-occupation, gender-emotion) known to
+            be pervasive in training datasets.
+        </div>
+    </div>
+
+
+    <div class="container-fluid content">
+        <h2 class="title">Creation of non-stereotypical benchmarks</h2>  
+        <div id="unstereo-eval-pipeline">
+            The reliable assessment of fairness in stereotype-free scenarios requires varied and natural-sounding sentences. 
+            To address this requirement, we develop an automated model-based pipeline to create non-stereotypical English sentences.
+            The pipeline consists of two parts:
+        </div>
+        <ul>
+            <li> 
+                <span style="color:cornflowerblue"> 1) Word selection stage</span> chooses seed words using a 
+                PMI-based score to guide sentence generation;
+            </li>
+            <li>
+                <span style="color: orange"> 2) Sentence pairs generation stage</span> leverages ChatGPT to 
+                produce 5 sentences for each (gender, seed word) pair, followed by the creation of the 
+                opposite gender variant, and subsequent removal of unnatural pairs or any pair containing 
+                gender co-occurring words (operationalized as |MaxPMI(s)| ≤ η).
+            </li>
+        </ul>
+        <figure class="main-figure">
+            <img src="./assets/images/figure2.png" alt="UnStereoEval">
+        </figure>
+        <div>The pipeline can be repeated multiple times until a desired benchmark size is achieved.</div>
+    </div>
+
+
+    <div class="container-fluid content">
+        <h2 class="title">Evaluation using UnStereoEval</h2>
+        <div id="metrics" class="title row">
+            <div class="col-md-3">
+                <label class="text-secondary" for="dataset-menu">Dataset:&nbsp;</label>
+                <select name="dataset-menu" id="dataset-menu">
+                    <option value="USE-5" selected="selected">USE-5</option>
+                    <option value="USE-10">USE-10</option>
+                    <option value="USE-20">USE-20</option>
+                    <option value="Winobias">Winobias</option>
+                    <option value="Winogender">Winogender</option>
+                    </select>
+            </div>
+            <div class="col-md-3">
+                <label class="text-secondary" for="eta-menu">η:&nbsp;</label>
+                <select name="eta-menu" id="eta-menu">
+                    <option value="0.3">0.3</option>
+                    <option value="0.5">0.5</option>
+                    <option value="0.65">0.65</option>
+                    <option value="0.8">0.8</option>
+                    <option value="1.0">1.0</option>
+                    <option value="unconstrained" selected="selected">None</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="text-secondary" for="metric-menu">Metric:&nbsp;</label>
+                <select name="metric-menu" id="metric-menu">
+                    <option value="neutral__avg" selected="selected">Unstereo score</option>
+                    <option value="male_rel_ratio">Preference disparity</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <font class="text-secondary">Benchmark Size:</font>
+                <font id="benchmark-size"></font>
+            </div>
+            <div>
+                <svg id="barplot" width="800" height="300"></svg>
             </div>
         </div>
-        <div class="content" id="BibTex">
-            <h2 class="title">BibTeX</h2>
-            <div>
-                <code id="bibtex-textarea" readonly="true">
-                    @inproceedings{belem2024-unstereoeval,
-                        <br>&nbsp;&nbsp;title={Are Models Biased on Text without Gender-related Language?}, 
-                        <br>&nbsp;&nbsp;author={Catarina G Bel{\'e}m and Preethi Seshadri and Yasaman Razeghi and Sameer Singh},
-                        <br>&nbsp;&nbsp;month={May},
-                        <br>&nbsp;&nbsp;year={2024},
-                        <br>&nbsp;&nbsp;booktitle={The Twelfth International Conference on Learning Representations},
-                        <br>&nbsp;&nbsp;url={https://openreview.net/forum?id=w1JanwReU6}
-                        <br>}
-                </code>         
-        </div>
+    </div>
+
+    <div class="container-fluid content" id="BibTex">
+        <h2 class="title">BibTeX</h2>
+        <div class="row">
+            <code id="bibtex-textarea" readonly="true">
+                @inproceedings{belem2024-unstereoeval,
+                    <br>&nbsp;&nbsp;title={Are Models Biased on Text without Gender-related Language?}, 
+                    <br>&nbsp;&nbsp;author={Catarina G Bel{\'e}m and Preethi Seshadri and Yasaman Razeghi and Sameer Singh},
+                    <br>&nbsp;&nbsp;month={May},
+                    <br>&nbsp;&nbsp;year={2024},
+                    <br>&nbsp;&nbsp;booktitle={The Twelfth International Conference on Learning Representations},
+                    <br>&nbsp;&nbsp;url={https://openreview.net/forum?id=w1JanwReU6}
+                    <br>}
+            </code>         
+            </div>
+    </div>
     <footer class="container-fluid py-5 pb-3 text-muted text-small text-center"><small>Copyright © 2024</small></footer>        
 </body>
 </html>

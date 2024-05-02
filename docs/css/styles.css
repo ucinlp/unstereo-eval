@@ -1,13 +1,25 @@
-a {
-    text-decoration: none;
+
+body {
+    max-width: 1000px;
+    margin: 2em auto;
+    text-align: justify;
+    background-color: #ffffff;
+
 }
 
-p {
-    line-height: 25px;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 1em;
-    margin-inline-end: 1em;
+div.content {
+    margin: 1em auto
+}
+
+a {
+    text-decoration: none;
+    font-size: 1.25em;
+    text-align: center;
+
+}
+
+#authors {
+    font-size: 1.25em;
 }
 
 code {
@@ -20,14 +32,6 @@ code {
     color: #0f0f0f;
 }
 
-div {
-    display: block;
-}
-
-.affiliation {
-    font-size: 22px;
-}
-
 .title {
     text-align: center;
 }
@@ -38,25 +42,11 @@ div {
 
 .content {
     text-align: justify;
-    box-shadow: 0 0.1em 0.01em 0 rgba(0,0,0,0.1);
-    border-radius: 1.5em;
-    background-color: #f9f9f9;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
+    background-color: #f0f0f0;
     font-family: 'Google Sans', sans-serif;
-    padding: 0.5rem 0.5rem;
+    padding: 1em 2em;
 }
-
-.links {
-    text-align: center;
-}
-
-#authors {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.25em;
-    font-weight: normal;
-    text-decoration: none !important;
-}
-
 
 #bibtex {
     text-align: center;
@@ -65,24 +55,12 @@ div {
     font-size: 20px;
 }
 
-
-a.btn {
-    background-color: #f0f0f0;
-    border-radius: 0.5em;
-    box-shadow: 0 0.1em 0.1em 0 rgba(0, 0, 0, 0.213);
-    cursor: pointer;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-}
-
 .publication-award {
-    font-weight: 500;
     text-align: center;
+    color: #3d85c6ff;
 }
 
 img {
     width: 70%;
-    border-radius: 2.5em;
+    border-radius: 2em;
 }
-
