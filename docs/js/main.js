@@ -17,20 +17,20 @@ $(document).ready(function() {
         'pythia-6.9b (D)',
         'pythia-12b',
         'pythia-12b (D)',
-        //'gpt-j-6b',
-        //'opt-125m',
-        //'opt-350m',
-        //'opt-2.7b',
-        //'opt-6.7b',
-        //'llama-2-7b',
-        //'llama-2-13b',
-        //'llama-2-70b',
-        //'mpt-7b',
-        //'mpt-30b',
-        //'OLMo-1B',
-        //'OLMo-7B',
-        //'Mistral-7B-v0.1',
-        //'Mixtral-8x7B-v0.1'
+        'gpt-j-6b',
+        'opt-125m',
+        'opt-350m',
+        'opt-2.7b',
+        'opt-6.7b',
+        'llama-2-7b',
+        'llama-2-13b',
+        'llama-2-70b',
+        'mpt-7b',
+        'mpt-30b',
+        'OLMo-1B',
+        'OLMo-7B',
+        'Mistral-7B-v0.1',
+        'Mixtral-8x7B-v0.1'
     ];
     // Function to load data from CSV file
     function loadDataFromJSON(callback) {
@@ -166,8 +166,7 @@ $(document).ready(function() {
             .attr('y', d => yScale((selectedMetric == "neutral__avg") ? d.value : d.value*100) - 5 )
             .attr('text-anchor', 'middle')
             .text(d => (selectedMetric == "neutral__avg") ? d.value.toFixed(2) + '%' : (d.value * 100).toFixed(2) + '%')
-            .style("font-size", "0.8em");
-        
+            .style("font-size", "0.5em");
         };
 
         
