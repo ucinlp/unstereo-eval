@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="js/main.js"></script>
 </head>
 <body>
         <div class="content">
@@ -57,19 +63,6 @@
                 In this paper, we focus on bias where the effect from training data is unclear, and instead address the question: <em>Do language models still exhibit gender bias in non-stereotypical settings?</em>
             </p>
         </div>
-       <!-- <div class="content">
-            <h2 class="title">Contributions</h2>
-            <p id="contributions">
-                Our results reveal that, even after ensuring the evaluation set is composed of sentence pairs that are not gender-correlated according to the pretraining data, models still tend to be overconfident and assign higher probability mass to one gender over the other.
-                Key contributions of this work include: 
-            </p>
-            <ul>
-                <li>Approaches gender bias in NLP from a new perspective, challenging previously held observations with the intent of better understanding model behavior.</li>
-                <li>UnStereoEval (USE): a novel framework to study gender bias in stereotype-free scenarios.</li>
-                <li>Proposes an automated way of creating large-scale diverse English benchmark constituting fluent English sentences that are gender neutral and whose words have minimal gender correlations.</li>
-                <li>Leverages ChatGPT to propose a new evaluation benchmark and releases two repurposed stereotype-free versions of WinoBias and Winogender.</li>
-            </ul>
-        </div> -->
         <div class="content">
             <h2 class="title">UnStereoEval</h2>  
             <p id="unstereo-eval">
@@ -113,7 +106,47 @@
         </div>
         <div class="content">
             <h2 class="title">Evaluation using UnStereoEval</h2>
-            <p id="metrics"></p>
+            <div id="metrics" class="title">
+                <p>
+                    <span>
+                        <label for="dataset-menu">Dataset:&nbsp;</label>
+                        <select name="dataset-menu" id="dataset-menu">
+                            <option value="USE-5" selected="selected">USE-5</option>
+                            <option value="USE-10">USE-10</option>
+                            <option value="USE-20">USE-20</option>
+                            <option value="Winobias">Winobias</option>
+                            <option value="Winogender">Winogender</option>
+                            </select>
+                    </span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>
+                        <label for="eta-menu">η:&nbsp;</label>
+                        <select name="eta-menu" id="eta-menu">
+                            <option value="0.3">0.3</option>
+                            <option value="0.5">0.5</option>
+                            <option value="0.65">0.65</option>
+                            <option value="0.8">0.8</option>
+                            <option value="1.0">1.0</option>
+                            <option value="unconstrained" selected="selected">None</option>
+                        </select>
+                    </span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>
+                        <label for="metric-menu">Metric:&nbsp;</label>
+                        <select name="metric-menu" id="metric-menu">
+                            <option value="neutral__avg" selected="selected">Unstereo score</option>
+                            <option value="male_rel_ratio">Preference disparity</option>
+                        </select>
+                    </span>
+                    <span>
+                        <font color=#0f0f0f>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Benchmark Size:</font>
+                        <font id="benchmark-size"></font>
+                    </span>
+                </p>
+                <p>
+                    <svg id="barplot" width="80%" height="60%"></svg>
+                </p>
+            </div>
         </div>
         <div class="content" id="BibTex">
             <h2 class="title">BibTeX</h2>
@@ -130,10 +163,5 @@
                 </code>         
         </div>
     <footer class="container-fluid py-5 pb-3 text-muted text-small text-center"><small>Copyright © 2024</small></footer>        
-    
-    <!-- External JS libraries-->
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-	<!-- Custom JS -->
-	<script src="js/main.js"></script>
 </body>
 </html>
