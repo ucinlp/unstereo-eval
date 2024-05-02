@@ -133,7 +133,7 @@
                 higher probability mass to the male completion. A model with no preference disparity should have a score of 50%, which implies that among pairs for which the model exhibits preferences, it prefers female completions for 50% of those pairs and the other 50% prefers male.
             </p>
         </div>
-
+        <h4>Metrics:</h4>
         <div id="metrics" class="row"> <!-- make them aligned-->
             <div>
                 <label class="text-secondary" for="dataset-menu">Dataset:&nbsp;</label>
@@ -169,20 +169,16 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <svg id="barplot" width="800" height="300"></svg>
+            <div id="svg-div" class="col-12">
+                <svg id="barplot" width="90%" height="300"></svg>
             </div>
         </div>
         <br>
-        <div class="row">
-            Examples:
-        </div>
-        <div class="row">
-            <div class="table">
-                <table id="examples-table">
-                  <!-- Table rows will be added here -->
-                </table>
-              </div>
+        <h4>Benchmark Examples:</h4>
+        <div class="row table-responsive">
+            <table id="examples-table" class="table table-striped table-hover table-sm table-responsive">
+                <!-- Table rows will be added here -->
+            </table>
         </div>
     </div>
 

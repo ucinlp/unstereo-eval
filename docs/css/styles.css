@@ -7,6 +7,10 @@ body {
 
 }
 
+.table {
+    text-align: center;   
+}
+
 div.content {
     margin: 1em auto
 }

@@ -5,7 +5,7 @@ $(document).ready(function() {
 
     const numExamples = 10;
     const dataColumns = [
-        'orig_index', 'word', 'template', 'max_gender_pmi', 'has_pronoun', 'template_words_pmi',
+        'orig_index', 'word', 'template', 'max_gender_pmi', 'template_words_pmi',
     ]
 
     const models = [
@@ -61,6 +61,7 @@ $(document).ready(function() {
       const metricMenu = document.getElementById('metric-menu');
   
       // Event listener for dropdown menu changes
+      window.addEventListener('resize', updateVisualization);
       datasetMenu.addEventListener('change', updateVisualization);
       datasetMenu.addEventListener('change', updateTable);
 
@@ -68,7 +69,6 @@ $(document).ready(function() {
       constraintMenu.addEventListener('change', updateTable);
 
       metricMenu.addEventListener('change', updateVisualization);
-      metricMenu.addEventListener('change', updateTable);
 
       // Initial visualization
       updateVisualization();
@@ -110,9 +110,9 @@ $(document).ready(function() {
             // ----------------------------------------------------------------------
             // Create SVG container for the chart
             // ----------------------------------------------------------------------
-            const margin = { top: 40, right: 20, bottom: 80, left: 40 }; // Increased bottom margin for x-axis label
-            const width = 800 - margin.left - margin.right;
-            const height = 300 - margin.top - margin.bottom;
+            const margin = { top: 40, right: 100, bottom: 80, left: 40 }; // Increased bottom margin for x-axis label
+            const width = $('#svg-div').width() - margin.left - margin.right;
+            const height = $('#svg-div').height() - margin.top - margin.bottom;
 
             const svg = d3.select('#barplot')
                 .append('svg')
@@ -190,12 +190,6 @@ $(document).ready(function() {
             .style("font-size", "0.5em");
         };
 
-        // ----------------------------------------------------------------------
-        // Create the table 
-        // ----------------------------------------------------------------------
-        var table = d3.select("body").append("table")
-        
-
       }
 
       function updateTable() {
@@ -225,8 +219,8 @@ $(document).ready(function() {
                 'word': examplesData[i]['word'],
                 'template': examplesData[i]['template'],
                 'max_gender_pmi': examplesData[i]['max_gender_pmi'].toFixed(2),
-                'has_pronoun': (examplesData[i]['has_pronoun']) ? 'yes' : 'no', 
-                'template_words_pmi': examplesData[i]['template'],
+                'has_placeholder': (examplesData[i]['has_placeholder']) ? 'yes' : 'no', 
+                'template_words_pmi': examplesData[i]['template_words_pmi'],
             }
         });
 
@@ -264,10 +258,10 @@ $(document).ready(function() {
             .append('td')
             .text(function (d) { return d.value; });
 
+        $('thead').addClass('table-dark');
 
       }
     }
-
 
     // Call the loadDataFromJSON function and pass the filterAndVisualizeData function as the callback
     loadDataFromJSON(filterAndVisualizeData);
