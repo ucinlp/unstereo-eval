@@ -110,7 +110,7 @@ $(document).ready(function() {
             // ----------------------------------------------------------------------
             // Create SVG container for the chart
             // ----------------------------------------------------------------------
-            const margin = { top: 40, right: 100, bottom: 80, left: 40 }; // Increased bottom margin for x-axis label
+            const margin = { top: 40, right: 20, bottom: 80, left: 40 }; // Increased bottom margin for x-axis label
             const width = $('#svg-div').width() - margin.left - margin.right;
             const height = $('#svg-div').height() - margin.top - margin.bottom;
 
@@ -199,7 +199,7 @@ $(document).ready(function() {
         examplesData = examples[selectedDataset];
         // Filter the dataset based on the selected constraint 
         if (selectedConstraint != "unconstrained") {
-            examplesData = examplesData.filter(d => d["max_gender_pmi"] <= parseFloat(selectedConstraint));
+            examplesData = examplesData.filter(d => Math.abs(d["max_gender_pmi"]) <= parseFloat(selectedConstraint));
         }
 
         selectedExamples = [];

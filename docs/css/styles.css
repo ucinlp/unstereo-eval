@@ -64,7 +64,8 @@ code {
 }
 
 img {
-    width: 70%;
+    width: auto;
+    max-width: 900px;
     border-radius: 2em;
 }
 
@@ -75,4 +76,10 @@ img {
 
 .text-center {
     text-align: center;
+}
+
+img.background {
+    height: auto;
+    max-height: 22em;
+
 }
