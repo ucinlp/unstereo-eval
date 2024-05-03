@@ -51,7 +51,7 @@
     </div>
 
     <div class="container-fluid content">
-        <h2 class="title text-secondary">Abstract</h2>
+        <h2 class="text-secondary">Abstract</h2>
         <div id="abstract">
             We introduce UnStereoEval (USE), a novel framework tailored for investigating gender bias in stereotype-free scenarios. 
             USE defines a sentence-level score based on pretraining data statistics to determine if the sentence contain minimal word-gender associations. 
@@ -63,18 +63,23 @@
         </div>
     </div>
 
-    <div class="container-fluid content">
-        <h2 class="title text-secondary">Background</h2>
-        <div> Gender bias research has been pivotal in revealing undesirable behaviors in large language models, exposing serious gender stereotypes associated with occupations, and emotions. 
-            A key observation in prior work is that models reinforce stereotypes as a consequence of the gendered correlations that are present in the training data. 
-            In this paper, we focus on bias where the effect from training data is unclear, and instead address the question:
-            <em class="text-secondary">Do language models still exhibit gender bias in non-stereotypical settings?</em>
+    <div class="container-fluid content justify-content-center">
+        <h2 class="text-secondary">Background</h2>
+
+        <div class="row align-items-center text-justify">
+            <div class="col-md-6"> Gender bias research has been pivotal in revealing undesirable behaviors in large language models, exposing serious gender stereotypes associated with occupations, and emotions. 
+                A key observation in prior work is that models reinforce stereotypes as a consequence of the gendered correlations that are present in the training data. 
+                In this paper, we focus on bias where the effect from training data is unclear, and instead address the question:
+                <em class="text-secondary">Do language models still exhibit gender bias in non-stereotypical settings?</em>
+            </div>
+            <figure class="col-md-6">
+                <img class="img-fluid" src="./assets/images/background.png" >
+            </figure>
         </div>
-        <!-- add motivating image -->
     </div>
 
     <div class="container-fluid content">
-        <h2 class="title text-secondary">UnStereoEval</h2>  
+        <h2 class="text-secondary">UnStereo Eval</h2>  
         <div id="unstereo-eval">
             UnStereoEval evaluates gender fairness of language models using non-stereotypical English sentences.
             It builds on word-level pretraining statistics to quantify the gender correlation of each word and thus ensure minimal gender correlations within sentences.
@@ -93,7 +98,7 @@
 
 
     <div class="container-fluid content">
-        <h2 class="title text-secondary">Creation of non-stereotypical benchmarks</h2>  
+        <h2 class="text-secondary">Creation of non-stereotypical benchmarks</h2>  
         <div id="unstereo-eval-pipeline">
             The reliable assessment of fairness in stereotype-free scenarios requires varied and natural-sounding sentences. 
             To address this requirement, we develop an automated model-based pipeline to create non-stereotypical English sentences.
@@ -119,7 +124,7 @@
 
 
     <div class="container-fluid content">
-        <h2 class="title text-secondary">Evaluation using UnStereoEval</h2>
+        <h2 class="text-secondary">Evaluation using UnStereo Eval</h2>
         <div class="row">
             <p>
                 Ideally, a model evaluated on non-stereotypical sentences should exhibit no bias towards either
@@ -183,7 +188,7 @@
     </div>
 
     <div class="container-fluid content" id="BibTex">
-        <h2 class="title text-secondary">BibTeX</h2>
+        <h2 class="text-secondary">BibTeX</h2>
         <div class="row">
             <code id="bibtex-textarea" readonly="true">
                 @inproceedings{belem2024-unstereoeval,
